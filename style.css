@@ -1,0 +1,113 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background-color: black;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+main {
+    padding: 5vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+
+#title {
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#title a {
+    list-style: none;
+    color: white;
+}
+
+#game {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 2vh;
+}
+
+#game ul {
+    padding: 1vh;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+    border: 0.5vh solid white;
+    border-top: none;
+    border-radius: 0 0 4vh 4vh;
+}
+
+#game ul li {
+    width: 5vh;
+    height: 5vh;
+    border-radius: 100%;
+}
+
+#controller {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#controller button {
+    background-color: transparent;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: xx-large;
+    border: 0.5vh solid white;
+    margin: 1vh;
+    padding: 0.5vh;
+}
+
+#controller button:hover {
+    border-color: transparent;
+}
+
+#code {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#code textarea {
+    background-color: transparent;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+}
+
+#rules {
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    width: 70%;
+}
+
+.c1 {
+    background-color: green;
+}
+
+.c2 {
+    background-color: red;
+}
+
+.c3 {
+    background-color: blue;
+}
+
+.c4 {
+    background-color: yellow;
+}

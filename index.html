@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sand sort puzzle challenge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1 id="title">SAND SORT PUZZLE CHALLENGE <sub>by <a href="https://github.com/FondVert" target="_blank">FondVert</a></sub></h1>
+        <div id="game"></div>
+        <div id="controller">
+            <button onclick="_play()">PLAY</button>
+            <button onclick="_stop()">STOP</button>
+        </div>
+        <div id="code">
+            <textarea name="input" id="input" cols="30" rows="10" placeholder="CODE HERE"></textarea>
+        </div>
+        <p id="rules">
+            Challenge in javascript, here are the rules<br>
+            1) As few passes as possible<br>
+            2) The least amount of code possible (without ;)<br>
+            3) Have a lot of fun<br>
+            <br>
+            "game" returns an array of four elements containing the balls<br>
+            0 is empty<br>
+            The others are colors<br>
+            <br>
+            The function "move" allows to move the highest ball to a lower location of another tube<br>
+            The function takes two parameters, "from" and "to".<br>
+            Both a number between 0 and 3 which correspond to the tubes<br>
+            <br>
+            It's your turn to play<br>
+        </p>
+    </main>
+    <script>
+        var first = [
+            [0, 1, 2 ,1],
+            [3, 4, 1 ,2],
+            [0, 2, 3, 4],
+            [0, 3, 4, 3],
+        ]
+        var code
+        var timer
+
+        function _gen(game) {
+            var tmp = ""
+            for (let i = 0; i < game.length; i++) {
+                tmp+="<ul>"
+                for (const a of game[i]) {
+                    tmp+=`<li class="c${a}"></li>`
+                }
+                tmp+="</ul>"
+            }
+
+            document.getElementById("game").innerHTML = tmp
+        }
+
+        _gen(first)
+        var game = first
+
+        function _run() {
+            try {
+                eval(code)
+            } catch {
+                _stop()
+                alert('ERROR, CHECK YOUR CODE')
+            }
+        }
+
+        function _play() {
+            _stop()
+            code = document.getElementById('input').value
+            timer = setInterval(_run, 1000);
+        }
+
+        function _stop() {
+            try {
+                clearInterval(timer)
+            } catch {
+                null
+            }
+        }
+
+        function move(from, to) {
+            var fromColor = 0
+            var tmpA = 0
+            for (const a of game[from]) {
+                tmpA++
+                if(a != 0) {
+                    fromColor = a
+                    tmpA--
+                    break
+                }
+            }
+            var tmpB = 0
+            if(game[to][0] == 0) {
+                for (const a of game[to]) {
+                    tmpB++
+                    if(a == 0) {
+                        tmpB--
+                        break
+                    }
+                }
+                game[to][tmpB] = fromColor
+                game[from][tmpA] = 0
+            }
+            _gen(game)
+        }
+    </script>
+</body>
+</html>
