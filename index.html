@@ -11,9 +11,11 @@
     <main>
         <h1 id="title">SAND SORT PUZZLE CHALLENGE <sub>by <a href="https://github.com/FondVert" target="_blank">FondVert</a></sub></h1>
         <div id="game"></div>
+        <h1 id="counter">Passes: 0</h1>
         <div id="controller">
             <button onclick="_play()">PLAY</button>
             <button onclick="_stop()">STOP</button>
+            <button onclick="_reset()">RESET</button>
         </div>
         <div id="code">
             <textarea name="input" id="input" cols="30" rows="10" placeholder="CODE HERE"></textarea>
@@ -35,80 +37,6 @@
             It's your turn to play<br>
         </p>
     </main>
-    <script>
-        var first = [
-            [0, 1, 2 ,1],
-            [0, 4, 1 ,2],
-            [0, 2, 3, 4],
-            [0, 3, 4, 3],
-        ]
-        var code
-        var timer
-
-        function _gen(game) {
-            var tmp = ""
-            for (let i = 0; i < game.length; i++) {
-                tmp+="<ul>"
-                for (const a of game[i]) {
-                    tmp+=`<li class="c${a}"></li>`
-                }
-                tmp+="</ul>"
-            }
-
-            document.getElementById("game").innerHTML = tmp
-        }
-
-        _gen(first)
-        var game = first
-
-        function _run() {
-            try {
-                eval(code)
-            } catch {
-                _stop()
-                alert('ERROR, CHECK YOUR CODE')
-            }
-        }
-
-        function _play() {
-            _stop()
-            code = document.getElementById('input').value
-            timer = setInterval(_run, 1000);
-        }
-
-        function _stop() {
-            try {
-                clearInterval(timer)
-            } catch {
-                null
-            }
-        }
-
-        function move(from, to) {
-            var fromColor = 0
-            var tmpA = 0
-            for (const a of game[from]) {
-                tmpA++
-                if(a != 0) {
-                    fromColor = a
-                    tmpA--
-                    break
-                }
-            }
-            var tmpB = 0
-            if(game[to][0] == 0) {
-                for (const a of game[to]) {
-                    tmpB++
-                    if(a == 0) {
-                        tmpB--
-                        break
-                    }
-                }
-                game[to][tmpB] = fromColor
-                game[from][tmpA] = 0
-            }
-            _gen(game)
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>

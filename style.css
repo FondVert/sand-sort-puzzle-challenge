@@ -57,6 +57,13 @@ main {
     border-radius: 100%;
 }
 
+#counter {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: xx-large;
+    color: white;
+}
+
 #controller {
     margin-left: auto;
     margin-right: auto;
